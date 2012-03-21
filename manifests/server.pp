@@ -1,7 +1,7 @@
-class newrelic::server {
+class newrelic::server (
+    $newrelic_license
+    ) {
     include newrelic::package
-
-    if $newrelic_license == undef{ fail('$newrelic_license not defined') }
 
     exec { "newrelic-set-license":
         unless  => "egrep -q '^license_key=${newrelic_license}$' /etc/newrelic/nrsysmond.cfg",
