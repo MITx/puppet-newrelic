@@ -1,5 +1,5 @@
 class newrelic::repo {
-    case $operatingsystem {
+    case $::operatingsystem {
         /Debian|Ubuntu/: {
             exec { newrelic-add-apt-key:
                 unless  => "apt-key list | grep -q 1024D/548C16BF",
