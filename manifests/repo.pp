@@ -2,7 +2,7 @@ class newrelic::repo {
     case $::operatingsystem {
         /Debian|Ubuntu/: {
             file { "/etc/apt/trusted.gpg.d/newrelic.gpg":
-                source => "puppet:///newrelic/GPG-KEY-NewRelic.gpg",
+                source => "puppet:///newrelic/GPG-KEY-NewRelic",
                 owner  => "root",
                 group  => "root",
                 mode   => 0644,
