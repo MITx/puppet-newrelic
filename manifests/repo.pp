@@ -2,7 +2,7 @@ class newrelic::repo {
     case $::operatingsystem {
         /Debian|Ubuntu/: {
             file { "/etc/apt/trusted.gpg.d/newrelic.gpg":
-                source => "puppet:///newrelic/APT-GPG-KEY-NewRelic.gpg",
+                source => "puppet:///newrelic/GPG-KEY-NewRelic.gpg",
                 owner  => "root",
                 group  => "root",
                 mode   => 0644,
@@ -22,14 +22,14 @@ class newrelic::repo {
                 owner   => root,
                 group   => root,
                 mode    => 0644,
-                source  => "puppet:///newrelic/RPM-GPG-KEY-NewRelic";
+                source  => "puppet:///newrelic/GPG-KEY-NewRelic";
             }
 
             yumrepo { "newrelic":
                 baseurl     => "http://yum.newrelic.com/pub/newrelic/el5/\$basearch",
                 enabled     => "1",
                 gpgcheck    => "1",
-                gpgkey      => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-NewRelic";
+                gpgkey      => "file:///etc/pki/rpm-gpg/GPG-KEY-NewRelic";
             }
         }
     }
