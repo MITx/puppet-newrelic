@@ -4,7 +4,7 @@ class newrelic::repo {
             exec { newrelic-add-apt-key:
                 unless  => "apt-key list | grep -q 1024D/548C16BF",
                 command => "apt-key adv --keyserver hkp://subkeys.pgp.net --recv-keys 548C16BF",
-                retries => 3,
+                tries   => 3,
             }
             exec { newrelic-add-apt-repo:
                 creates => "/etc/apt/sources.list.d/newrelic.list",
