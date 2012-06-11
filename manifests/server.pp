@@ -1,5 +1,6 @@
 class newrelic::server (
-    $license = $::newrelic_license
+    $license   = $::newrelic_license,
+    $reporting = $newrelic::reporting,
     ) {
     include newrelic::package
 
@@ -21,7 +22,7 @@ class newrelic::server (
 
     service { "newrelic-sysmond":
         enable  => true,
-        ensure  => running,
+        ensure  => $reporting,
         hasstatus => true,
         hasrestart => true,
         require => Class["newrelic::package"];
